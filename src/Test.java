@@ -10,7 +10,7 @@ public class Test {
         proov.add(2);
         proov.add(2);
         proov.add(3);
-        Meetodid m1=new Meetodid(proov);
+        Meetodid m1=new Meetodid();
         System.out.println(m1.kolmed(proov));
     }
 }

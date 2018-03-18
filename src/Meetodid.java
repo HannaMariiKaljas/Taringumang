@@ -1,10 +1,31 @@
 import java.util.*;
 
 public class Meetodid {
-    List<Integer> valik;
+    //public List<Integer> valik;
 
-    public Meetodid(List<Integer> valik) {
+    /*public Meetodid(List<Integer> valik) {
         this.valik = valik;
+    }*/
+
+    /*public Meetodid(Täring[] täringud){
+        valik = new ArrayList<>();
+        for (Täring t : täringud) {
+            if (t.getValitud() == true) {
+                valik.add(t.getTulemus());
+            }
+        }
+    }*/
+
+    //Parem on vist kui selle klassi kasutamiseks ei pea isendit looma
+
+    public static List<Integer> valik(Täring[] täringud){ // teisendab array Täring[] List<Integer>-ks
+        List<Integer> valik = new ArrayList<>();
+        for (Täring t : täringud) {
+            if (t.getValitud() == true) {
+                valik.add(t.getTulemus());
+            }
+        }
+        return valik;
     }
     public static String ühed(List<Integer> valik) {
         if(valik.size()==0){
