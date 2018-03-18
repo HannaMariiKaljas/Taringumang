@@ -146,7 +146,7 @@ public class Meetodid {
                 if (sum==22) {
                     return "X";
                 } else {
-                    return -(22 - valik.get(0) * 3) + "";
+                    return -(22 - sum) + "";
                 }
             }
         }
@@ -173,7 +173,7 @@ public class Meetodid {
                 if (sum==28) {
                     return "X";
                 } else {
-                    return -(28 - valik.get(0) * 3) + "";
+                    return -(28 - sum) + "";
                 }
             }
         }
@@ -205,6 +205,7 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna";
     }
+
     public static String Summa(List<Integer> valik) {
         if (valik.size() > 5) {
             return "valisid liiga palju täringuid";
