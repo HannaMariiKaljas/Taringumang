@@ -96,12 +96,12 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna ";
     }
-    public static String Kolmik(List<Integer> valik) {//POOLELI
+    public static String Kolmik(List<Integer> valik) {
         Set<Integer> set = new HashSet<Integer>(valik);
         if (set.size() < valik.size()) {
             Collections.sort(valik);
             Collections.reverse(valik);
-            for (int i = 0; i < valik.size(); i++) {
+            for (int i = 0; i < valik.size()-2; i++) {
                 if (valik.get(i) == valik.get(i + 1) && valik.get(i) == valik.get(i + 2)){
                     if (valik.get(i) == 6) {
                         return "X";
@@ -113,12 +113,12 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna ";
     }
-    public static String Nelik(List<Integer> valik) {//POOLELI
+    public static String Nelik(List<Integer> valik) {
         Set<Integer> set = new HashSet<Integer>(valik);
         if (set.size() < valik.size()) {
             Collections.sort(valik);
             Collections.reverse(valik);
-            for (int i = 0; i < valik.size(); i++) {
+            for (int i = 0; i < valik.size()-3; i++) {
                 if (valik.get(i) == valik.get(i + 1) && valik.get(i) == valik.get(i + 2)&& valik.get(i) == valik.get(i + 3)){
                     if (valik.get(i) == 6) {
                         return "X";
