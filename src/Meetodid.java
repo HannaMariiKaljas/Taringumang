@@ -99,7 +99,7 @@ public class Meetodid {
 
     public static String Kolmik(List<Integer> valik) {
         Set<Integer> set = new HashSet<Integer>(valik);
-        if (set.size() < valik.size()) {
+        if (set.size() < valik.size()&&valik.size()>=3) {
             Collections.sort(valik);
             Collections.reverse(valik);
             for (int i = 0; i < valik.size()-2; i++) {
@@ -116,7 +116,7 @@ public class Meetodid {
     }
     public static String Nelik(List<Integer> valik) {
         Set<Integer> set = new HashSet<Integer>(valik);
-        if (set.size() < valik.size()) {
+        if (set.size() < valik.size()&&valik.size()>=4) {
             Collections.sort(valik);
             Collections.reverse(valik);
             for (int i = 0; i < valik.size()-3; i++) {
@@ -125,6 +125,27 @@ public class Meetodid {
                         return "X";
                     } else {
                         return -(24 - valik.get(i) * 4) + "";
+                    }
+                }
+            }
+        }
+        return "ei saa tabelisse panna ";
+    }
+    public static String KaksPlussKaks(List<Integer> valik){
+        Set<Integer> set = new HashSet<Integer>(valik);
+        if (set.size() < valik.size()&&valik.size()>=4) {
+            Collections.sort(valik);
+            Collections.reverse(valik);
+            for (int i = 0; i < valik.size()-3; i++) {
+                if (valik.get(i) == valik.get(i + 1) && valik.get(i+2) == valik.get(i + 3) && valik.get(i)!=valik.get(i+2)){
+                    int sum=0;
+                    for (int j = i; j <=i+3 ; j++) {
+                        sum=sum+valik.get(j);
+                    }
+                    if (sum == 22) {
+                        return "X";
+                    } else {
+                        return -(22-sum) + "";
                     }
                 }
             }
