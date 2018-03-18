@@ -11,6 +11,6 @@ public class Test {
         proov.add(2);
         proov.add(3);
         Meetodid m1=new Meetodid(proov);
-        System.out.println(m1.Kolmik(proov));
+        System.out.println(m1.kolmed(proov));
     }
 }
