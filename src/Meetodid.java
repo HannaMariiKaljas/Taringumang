@@ -7,6 +7,9 @@ public class Meetodid {
         this.valik = valik;
     }
     public static String ühed(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.contains(1)) {
             int sagedus = Collections.frequency(valik, 1);
             if (sagedus == 3) {
@@ -19,18 +22,24 @@ public class Meetodid {
         }
     }
     public static String kahed(List<Integer> valik) {
-            if (valik.contains(2)) {
-                int sagedus = Collections.frequency(valik, 2);
-                if (sagedus == 3) {
-                    return "X";
-                } else {
-                    return (-(2 * 3)) + (sagedus * 2) + "";
-                }
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
+        if (valik.contains(2)) {
+            int sagedus = Collections.frequency(valik, 2);
+            if (sagedus == 3) {
+                return "X";
             } else {
-                return "ei saa tabelisse panna ";
+                return (-(2 * 3)) + (sagedus * 2) + "";
             }
+        } else {
+            return "ei saa tabelisse panna ";
+        }
         }
     public static String kolmed(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.contains(3)) {
             int sagedus = Collections.frequency(valik, 3);
             if (sagedus == 3) {
@@ -43,6 +52,9 @@ public class Meetodid {
         }
     }
     public static String neljad(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.contains(4)) {
             int sagedus = Collections.frequency(valik, 4);
             if (sagedus == 3) {
@@ -55,6 +67,9 @@ public class Meetodid {
         }
     }
     public static String viied(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.contains(5)) {
             int sagedus = Collections.frequency(valik, 5);
             if (sagedus == 3) {
@@ -67,6 +82,9 @@ public class Meetodid {
         }
     }
     public static String kuued(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.contains(6)) {
             int sagedus = Collections.frequency(valik, 6);
             if (sagedus == 3) {
@@ -80,6 +98,9 @@ public class Meetodid {
         }
     }
     public static String Paar(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if(valik.size()!=2){
             if(valik.size()>2){
                 return "valisid liiga palju täringuid";
@@ -96,6 +117,9 @@ public class Meetodid {
     }
 
     public static String Kolmik(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 3) {
             if (valik.size() > 3) {
                 return "valisid liiga palju täringuid";
@@ -112,6 +136,9 @@ public class Meetodid {
         return "ei saa tabelisse panna ";
     }
     public static String Nelik(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 4) {
             if (valik.size() > 4) {
                 return "valisid liiga palju täringuid";
@@ -128,6 +155,9 @@ public class Meetodid {
         return "ei saa tabelisse panna ";
     }
     public static String KaksPlussKaks(List<Integer> valik){
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 4) {
             if (valik.size() > 4) {
                 return "valisid liiga palju täringuid";
@@ -152,8 +182,10 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna ";
     }
-
     public static String Maja(List<Integer> valik){
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 5) {
             if (valik.size() > 5) {
                 return "valisid liiga palju täringuid";
@@ -180,6 +212,9 @@ public class Meetodid {
         return "ei saa tabelisse panna ";
     }
     public static String VäikeRida(List<Integer> valik){
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 5) {
             if (valik.size() > 5) {
                 return "valisid liiga palju täringuid";
@@ -193,6 +228,9 @@ public class Meetodid {
         return "ei saa tabelisse panna";
     }
     public static String SuurRida(List<Integer> valik){
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() != 5) {
             if (valik.size() > 5) {
                 return "valisid liiga palju täringuid";
@@ -207,6 +245,9 @@ public class Meetodid {
     }
 
     public static String Summa(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() > 5) {
             return "valisid liiga palju täringuid";
         }
@@ -223,6 +264,9 @@ public class Meetodid {
         }
     }
     public static String Jospel(List<Integer> valik) {
+        if(valik.size()==0){
+            return "Sa ei valinud ühtegi täringut";
+        }
         if (valik.size() < 5) {
             return "valisid liiga vähe täringuid";
         }
