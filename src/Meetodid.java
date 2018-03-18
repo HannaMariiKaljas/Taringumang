@@ -133,9 +133,11 @@ public class Meetodid {
     }
 
     public static String Summa(List<Integer> valik) {
-        if (valik.size()<=5) {
+        if (valik.size()>=5){
+            Collections.sort(valik);
+            Collections.reverse(valik);
             int summa=0;
-            for (int i = 0; i <valik.size() ; i++) {
+            for (int i = 0; i <5 ; i++) {
                 summa=summa+valik.get(i);
             }
             if(summa==30){
@@ -143,7 +145,7 @@ public class Meetodid {
             }else{
                 return summa+"";
             }
-        } else {
+        }else {
             return "ei saa tabelisse panna ";
         }
     }
