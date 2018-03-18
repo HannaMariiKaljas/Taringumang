@@ -96,6 +96,7 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna ";
     }
+
     public static String Kolmik(List<Integer> valik) {
         Set<Integer> set = new HashSet<Integer>(valik);
         if (set.size() < valik.size()) {
