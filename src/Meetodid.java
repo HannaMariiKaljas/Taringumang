@@ -21,6 +21,7 @@ public class Meetodid {
             return "ei saa tabelisse panna ";
         }
     }
+
     public static String kahed(List<Integer> valik) {
         if(valik.size()==0){
             return "Sa ei valinud ühtegi täringut";
