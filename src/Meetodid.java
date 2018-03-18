@@ -127,48 +127,53 @@ public class Meetodid {
         }
         return "ei saa tabelisse panna ";
     }
-    public static String KaksPlussKaks(List<Integer> valik){ //POOLELI
+    public static String KaksPlussKaks(List<Integer> valik){
+        if (valik.size() != 4) {
+            if (valik.size() > 4) {
+                return "valisid liiga palju täringuid";
+            }
+            return "valisid liiga vähe täringuid";
+        }
         Set<Integer> set = new HashSet<Integer>(valik);
-        if (set.size() < valik.size()&&valik.size()>=4) {
+        if (set.size() < valik.size()) {
             Collections.sort(valik);
             Collections.reverse(valik);
-            for (int i = 0; i < valik.size()-1; i++) {
+            if(valik.get(0)==valik.get(1)&&valik.get(2)==valik.get(3)){
                 int sum=0;
-                if (valik.get(i) == valik.get(i+1))
-                    sum=valik.get(i)+valik.get(i+1);
-                    for (int j = i+2; j <valik.size()-1 ; j++) {
-                        if (valik.get(j) == valik.get(j + 1)) {
-                            sum = sum + valik.get(j) + valik.get(j + 1);
-                            if (sum == 22) {
-                                return "X";
-                            } else {
-                                return -(22-sum) + "";
-                            }
-                        }
-                    }if (sum ==valik.get(i)+valik.get(i+1)){
-                        return "ei saa tabelisse panna ";
+                for (int i = 0; i <valik.size() ; i++) {
+                    sum=sum+valik.get(i);
+                }
+                if (sum==22) {
+                    return "X";
+                } else {
+                    return -(22 - valik.get(0) * 3) + "";
                 }
             }
         }
         return "ei saa tabelisse panna ";
     }
-    public static String Maja(List<Integer> valik){ //POOLELI
+
+    public static String Maja(List<Integer> valik){
+        if (valik.size() != 5) {
+            if (valik.size() > 5) {
+                return "valisid liiga palju täringuid";
+            }
+            return "valisid liiga vähe täringuid";
+        }
         Set<Integer> set = new HashSet<Integer>(valik);
-        if (set.size() < valik.size()&&valik.size()>=5) {
+        if (set.size() < valik.size()) {
             Collections.sort(valik);
             Collections.reverse(valik);
-            for (int i = 0; i < valik.size()-4; i++) {
-                if (valik.get(i) == valik.get(i + 1) && valik.get(i+2) == valik.get(i + 3)&& valik.get(i+3)==valik.get(i+4) && valik.get(i)!=valik.get(i+2)
-                        || valik.get(i) == valik.get(i + 1) && valik.get(i+1) == valik.get(i + 2)&& valik.get(i+3)==valik.get(i+4) && valik.get(i)!=valik.get(i+3)){
-                    int sum=0;
-                    for (int j = i; j <=i+4 ; j++) {
-                        sum=sum+valik.get(j);
-                    }
-                    if (sum == 28) {
-                        return "X";
-                    } else {
-                        return -(28-sum) + "";
-                    }
+            if(valik.get(0)==valik.get(1)&&valik.get(1)==valik.get(2)&&valik.get(3)==valik.get(4)
+                    ||valik.get(0)==valik.get(1)&&valik.get(2)==valik.get(3)&&valik.get(3)==valik.get(4)){
+                int sum=0;
+                for (int i = 0; i <valik.size() ; i++) {
+                    sum=sum+valik.get(i);
+                }
+                if (sum==28) {
+                    return "X";
+                } else {
+                    return -(28 - valik.get(0) * 3) + "";
                 }
             }
         }
