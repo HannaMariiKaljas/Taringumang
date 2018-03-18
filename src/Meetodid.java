@@ -15,7 +15,7 @@ public class Meetodid {
             if (sagedus == 3) {
                 return "X";
             } else {
-                return (-(1 * 3)) + (sagedus * 1) + "";
+                return (-3) + sagedus + "";
             }
         } else {
             return "ei saa tabelisse panna ";
