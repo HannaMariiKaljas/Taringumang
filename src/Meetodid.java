@@ -222,4 +222,31 @@ public class Meetodid {
             return summa+"";
         }
     }
+    public static String Jospel(List<Integer> valik) {
+        if (valik.size() < 5) {
+            return "valisid liiga vähe täringuid";
+        }
+        List<Integer> ilmakordusteta = new ArrayList<>(new HashSet<>(valik));
+        List<Integer> listväärtustega = new ArrayList<>();
+        Collections.sort(valik);
+        int väärtus = 0;
+        int indeks = 0;
+        if (ilmakordusteta.size() <= 3) {
+            for (int i = 0; i < ilmakordusteta.size(); i++) {
+                if (Collections.frequency(valik, ilmakordusteta.get(i)) > väärtus) {
+                    väärtus = Collections.frequency(valik, ilmakordusteta.get(i));
+                    indeks = i;
+                }
+            }
+            if (väärtus >= 5) {
+                if (väärtus == 5) {
+                    return ilmakordusteta.get(indeks) + " jospel";
+                } else if (väärtus == 6) {
+                    return ilmakordusteta.get(indeks) + " jospel + 10 punkti";
+                }
+                return ilmakordusteta.get(indeks) + " jospel + 20 punkti";
+            }
+        }
+        return "valitud täringut seas pole josplit";
+    }
 }
