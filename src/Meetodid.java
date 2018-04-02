@@ -18,12 +18,11 @@ public class Meetodid {
 
     //Parem on vist kui selle klassi kasutamiseks ei pea isendit looma
 
-    public static List<Integer> valik(Täring[] täringud){ // teisendab array Täring[] List<Integer>-ks
+    public static List<Integer> valik(Täringud t){ // teisendab array Täring[] List<Integer>-ks
         List<Integer> valik = new ArrayList<>();
-        for (Täring t : täringud) {
-            if (t.getValitud() == true) {
-                valik.add(t.getTulemus());
-            }
+        int[] täringud = t.getTäringud();
+        for (int i = 0; i < 7; i++){
+            valik.add(täringud[i]);
         }
         return valik;
     }
