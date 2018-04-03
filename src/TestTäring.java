@@ -11,6 +11,8 @@ public class TestTäring {
         täringud[0].lülitaValitud();
         täringud[1].lülitaValitud();
         System.out.println(Meetodid.neljad(Meetodid.valik(täringud)));
+
+
     }
 
 }
