@@ -1,18 +1,15 @@
 public class TestTäring {
     public static void main(String[] args) {
-        Täring[] täringud = new Täring[6];
-        for (int i = 0; i < 6; i++){
-            Täring t = new Täring();
-            t.lülitaValitud();
-            täringud[i] = t;
-            System.out.println(täringud[i].getTulemus());
-        }
+        Tabel tabel = new Tabel();
+        Täringud t = new Täringud();
+        t.veeretaKõik();
+        tabel.setEsimene(5,0);
+        tabel.väljasta();
+        t.väljasta();
+        int[] valik = {1,2,3};
+        t.veeretaValik(valik);
 
-        täringud[0].lülitaValitud();
-        täringud[1].lülitaValitud();
-        System.out.println(Meetodid.neljad(Meetodid.valik(täringud)));
-
-
+        t.väljasta();
     }
 
 }
