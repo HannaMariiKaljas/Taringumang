@@ -14,8 +14,29 @@ public class Tabel {
         }
         if (summa <= 63){
             summa -= 50;
+        }else {
+            summa+=50;
         }
         return summa;
+    }
+    public int alumineSumma(int[] veerg){
+        int summa = 0;
+        for (int i = 6; i < 14; i++) {
+            summa += veerg[i];
+        }
+        return summa;
+    }
+
+    public int josplidSumma( int[] josplid){
+        int summa=0;
+        for (int i = 0; i < 6; i++) {
+            summa+=josplid[i];
+        }
+        return summa;
+    }
+
+    public int üldineSumma (){
+        return alumineSumma(esimene)+alumineSumma(teine)+ülemineSumma(esimene)+ülemineSumma(teine)+josplidSumma(jospel);
     }
 
     public Tabel(){
@@ -53,8 +74,20 @@ public class Tabel {
     public void väljasta(){
         System.out.format("%22d%6d",1,2);
         System.out.println(" ");
+        String üks;
+        String kaks;
         for (int i = 0; i < 14; i++) {
-            System.out.format("%-2s%-12s%6d%6d", i+1  + "\t",valikud[i], esimene[i], teine[i]);
+            if (esimene[i] == 0){
+                üks = "X";
+            }else{
+                üks = Integer.toString(esimene[i]);
+            }
+            if (teine[i] == 0){
+                kaks = "X";
+            }else{
+                kaks = Integer.toString(teine[i]);
+            }
+            System.out.format("%-2s%-12s%6s%6s", i+1  + "\t",valikud[i], üks, kaks);
             System.out.println("");
             if (i == 5){
                 System.out.println("");
@@ -62,7 +95,7 @@ public class Tabel {
         }
         System.out.println("");
         for (int i = 0; i < 6; i++){
-            System.out.format("%-2s%-12s%12d", i+14 + "\t",valikud[i+14],jospel[i]);
+            System.out.format("%-2s%-12s%12s", i+14 + "\t",valikud[i+14],jospel[i]);
             System.out.println("");
         }
         System.out.println("");

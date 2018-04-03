@@ -2,7 +2,7 @@ public class Mängija {
     private String nimi;
     private Tabel tulemused = new Tabel();
     private int summa;
-    private int viskeid = 0;
+    private int vise = 1;
 
     public Mängija(String nimi) {
         this.nimi = nimi;
@@ -17,7 +17,11 @@ public class Mängija {
     }
 
     public void lisaVise(){
-        viskeid++;
+        vise++;
+    }
+
+    public int getVise(){
+        return vise;
     }
 
     @Override
