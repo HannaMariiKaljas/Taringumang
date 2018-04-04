@@ -1,31 +1,24 @@
 import java.util.*;
-
+/*
+Veateated
+9990 = "Sa ei valinud ühtegi täringut"
+9991 = "Ei saa tabelisse panna"
+9992 = "Valisid liiga palju täringuid"
+9993 = "Valisid liiga vähe täringuid"
+9994 = "Valiku seas pole josplit"
+*/
 public class Meetodid {
-    //public List<Integer> valik;
-
-    /*public Meetodid(List<Integer> valik) {
-        this.valik = valik;
-    }*/
-
-    /*public Meetodid(Täring[] täringud){
-        valik = new ArrayList<>();
-        for (Täring t : täringud) {
-            if (t.getValitud() == true) {
-                valik.add(t.getTulemus());
-            }
-        }
-    }*/
-
-    //Parem on vist kui selle klassi kasutamiseks ei pea isendit looma
-
-    public static List<Integer> teisenda(int[] täringud){ // teisendab array Täring[] List<Integer>-ks
+    public static List<Integer> teisenda(int[] täringud){ // int[] -> List<Integer>
         List<Integer> valik = new ArrayList<>();
         for (int i = 0; i < täringud.length; i++){
             valik.add(täringud[i]);
         }
         return valik;
     }
-    public static int ühed(List<Integer> valik) {
+    
+    //kõik järgnevad meetodid tagastavad kas veateate või sisestatud täringute väärtustele vastava tulemuse
+    
+    public static int ühed(List<Integer> valik) { 
         if(valik.size()==0){
             return 9990;
         }
@@ -52,6 +45,7 @@ public class Meetodid {
                     }
                 } return 9991;
     }
+    
     public static int kolmed(List<Integer> valik) {
                 if(valik.size()==0){
                     return 9990;
@@ -65,6 +59,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int neljad(List<Integer> valik) {
                 if(valik.size()==0){
                   return 9990;
@@ -92,6 +87,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int kuued(List<Integer> valik) {
                 if(valik.size()==0){
                     return 9990;
@@ -105,6 +101,7 @@ public class Meetodid {
                     }
                 } return 9991;
     }
+    
     public static int paar(List<Integer> valik) {
                 if(valik.size()==0){
                     return 9990;
@@ -141,6 +138,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int nelik(List<Integer> valik) {
                 if(valik.size()==0){
                     return 9990;
@@ -159,6 +157,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int kaksPlussKaks(List<Integer> valik){
                 if(valik.size()==0){
                     return 9990;
@@ -186,6 +185,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int maja(List<Integer> valik){
                 if(valik.size()==0){
                     return 9990;
@@ -214,6 +214,7 @@ public class Meetodid {
                     }
                 }return 9991;
     }
+    
     public static int väikeRida(List<Integer> valik){
                 if(valik.size()==0){
                     return 9990;
@@ -229,6 +230,7 @@ public class Meetodid {
                     return 0;
                 }return 9991;
     }
+    
     public static int suurRida(List<Integer> valik){
                 if(valik.size()==0){
                     return 9990;
@@ -264,6 +266,7 @@ public class Meetodid {
                     return summa;
                 }
     }
+    
     public static int jospel(List<Integer> valik, int jospel) {
         if (valik.size() == 0) {
             return 9990;
