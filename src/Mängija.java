@@ -20,6 +20,9 @@ public class Mängija {
         vise++;
     }
 
+    public Tabel getTabel(){
+        return tulemused;
+    }
     public int getVise(){
         return vise;
     }

@@ -13,25 +13,30 @@ public class Peaklass {
         Mängija m2 = new Mängija(sc.nextLine());
         Mängija aktiivne = m1;
         Täringud täringud = new Täringud();
-        täringud.veeretaKõik();
+
 
         while(true){
+            täringud.veeretaKõik();
             if (aktiivne.getVise() == 1){
-                int sagedus = 0;
-
-                for (int i = 1; i < 7; i++){
-                    if (Collections.frequency(Meetodid.valik(täringud),i) >= 3){
-                        break;
-                    }else{
-                        täringud.veeretaKõik();
+                while(true){
+                    boolean kontroll = false;
+                    for (int i = 1; i < 7; i++){
+                        if (Collections.frequency(Meetodid.teisenda(täringud.getTäringud()),i) >= 3){
+                            kontroll = true;
+                            break;
+                        }
                     }
+                    if (kontroll){
+                        break;
+                    }
+                    täringud.veeretaKõik();
                 }
             }
             while(true){
                 täringud.väljasta();
                 System.out.println("Vali täringud, mida uuesti veeretada: ");
                 String sisend = sc.nextLine();
-                if (sisend.length() > 1){
+                if (!sisend.isEmpty()){
                     String[] sõned = sisend.split(" ");
                     int[] valik = new int[sõned.length];
                     for (int i = 0; i < sõned.length; i++) {
@@ -43,7 +48,80 @@ public class Peaklass {
                     break;
                 }
             }
-            System.out.println(m1.getVise() + " " + m2.getVise());
+            while(true){
+                aktiivne.getTabel().väljasta();
+                täringud.väljasta();
+                System.out.println("Vali milliseid täringuid tahad tabelisse panna.");
+                String sisend = sc.nextLine();
+                if (!sisend.isEmpty()){
+                    String[] sõned = sisend.split(" ");
+                    int[] valik = new int[sõned.length];
+                    for (int i = 0; i < sõned.length; i++) {
+                        valik[i] = Integer.parseInt(sõned[i]);
+                    }
+                    System.out.println("Vali kuhu tabelisse täringud paned.");
+                    sisend = sc.nextLine();
+                    if (!sisend.isEmpty()){
+                        String[] pos = sisend.split(" ");
+                        int rida = Integer.parseInt(pos[0]);
+                        System.out.println(rida);
+                        int veerg = Integer.parseInt(pos[1]);
+                        System.out.println(aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
+                        if (veerg == 1){
+                            if (aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)) == 9998){
+                                System.out.println("Sisesta korrektne reanumber.");
+                            }else{
+                                aktiivne.getTabel().setEsimene(rida-1, aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
+                                aktiivne.getTabel().väljasta();
+                                if (aktiivne.equals(m1)){
+                                    if (m2.getVise() != 60){
+                                        aktiivne = m2;
+                                    }
+                                }else{
+                                    if (m1.getVise() != 60){
+                                        aktiivne = m1;
+                                    }
+                                }
+                                System.out.println(aktiivne.getNimi() + " kord. " + "Tehtud visete arv: " + aktiivne.getVise());
+                                break;
+                            }
+                        }else if (veerg == 2){
+                            if (aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)) == 9998){
+                                System.out.println("Sisesta korrektne reanumber.");
+                            }else{
+                                aktiivne.getTabel().setTeine(rida-1,aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
+                                aktiivne.getTabel().väljasta();
+                                if (aktiivne.equals(m1)){
+                                    if (m2.getVise() != 60){
+                                        aktiivne = m2;
+                                    }
+                                }else{
+                                    if (m1.getVise() != 60){
+                                        aktiivne = m1;
+                                    }
+                                }
+                                System.out.println(aktiivne.getNimi() + " kord. " + "Tehtud visete arv: " + aktiivne.getVise());
+                                break;
+                            }
+                        }else{
+                            System.out.println("Sisesta korrektne veerunumber.");
+                        }
+                    }
+                }else{
+                    System.out.println("Sisend ei saa olla tühi.");
+                }
+            }
+            if (m1.getVise() == 60 && m2.getVise() == 60){
+                System.out.println(m1.getNimi() + " sai " + m1.getTabel().üldineSumma() + " ja " + m2.getNimi() + " sai " + m2.getTabel().üldineSumma() + " punkti.");
+                if (m1.getTabel().üldineSumma() > m2.getTabel().üldineSumma()){
+                    System.out.println(m1.getNimi() + " võitis!");
+                }else if (m1.getTabel().üldineSumma() < m2.getTabel().üldineSumma()){
+                    System.out.println(m2.getNimi() + " võitis!");
+                }else{
+                    System.out.println("Viik!");
+                }
+                break;
+            }
         }
     }
 }

@@ -27,6 +27,14 @@ public class Täringud {
         return täringud;
     }
 
+    public int[] getValikuVäärtused(int[] valik){
+        int[] uus = new int[valik.length];
+        for (int i = 0; i< valik.length; i++){
+            uus[i] = täringud[valik[i]-1];
+        }
+        return uus;
+    }
+
     public void väljasta(){
         System.out.format("%-7s%2d%2d%2d%2d%2d%2d%2d","Täring\t",1,2,3,4,5,6,7);
         System.out.println("");

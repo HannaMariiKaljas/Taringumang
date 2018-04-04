@@ -100,4 +100,30 @@ public class Tabel {
         }
         System.out.println("");
     }
+
+    public int valiMeetod(int i, int[] valik){
+        switch(i){
+            case 0: return Meetodid.ühed(Meetodid.teisenda(valik));
+            case 1: return Meetodid.kahed(Meetodid.teisenda(valik));
+            case 2: return Meetodid.kolmed(Meetodid.teisenda(valik));
+            case 3: return Meetodid.neljad(Meetodid.teisenda(valik));
+            case 4: return Meetodid.viied(Meetodid.teisenda(valik));
+            case 5: return Meetodid.kuued(Meetodid.teisenda(valik));
+            case 6: return Meetodid.paar(Meetodid.teisenda(valik));
+            case 7: return Meetodid.kolmik(Meetodid.teisenda(valik));
+            case 8: return Meetodid.nelik(Meetodid.teisenda(valik));
+            case 9: return Meetodid.kaksPlussKaks(Meetodid.teisenda(valik));
+            case 10: return Meetodid.maja(Meetodid.teisenda(valik));
+            case 11: return Meetodid.väikeRida(Meetodid.teisenda(valik));
+            case 12: return Meetodid.suurRida(Meetodid.teisenda(valik));
+            case 13: return Meetodid.summa(Meetodid.teisenda(valik));
+            case 14: return Meetodid.jospel(Meetodid.teisenda(valik),1);
+            case 15: return Meetodid.jospel(Meetodid.teisenda(valik),2);
+            case 16: return Meetodid.jospel(Meetodid.teisenda(valik),3);
+            case 17: return Meetodid.jospel(Meetodid.teisenda(valik),4);
+            case 18: return Meetodid.jospel(Meetodid.teisenda(valik),5);
+            case 19: return Meetodid.jospel(Meetodid.teisenda(valik),6);
+            default: return 9998;
+        }
+    }
 }
