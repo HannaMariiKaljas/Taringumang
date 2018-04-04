@@ -26,33 +26,22 @@ public class Meetodid {
         return valik;
     }
     public static int ühed(List<Integer> valik) {
-        while(true){
-            try{
-                if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
-                }
-                if (valik.contains(1)) {
-                    int sagedus = Collections.frequency(valik, 1);
-                    if (sagedus == 3) {
-                        return 0;
-                    } else {
-                        return (-3) + sagedus;
-                    }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
+        if(valik.size()==0){
+            return 9990;
+        }
+        if (valik.contains(1)) {
+            int sagedus = Collections.frequency(valik, 1);
+            if (sagedus == 3) {
+                return 0;
+            } else {
+                return (-3) + sagedus;
             }
-        }return 9999; // 9999 on siis mingi error
+        } return 9991;
     }
 
     public static int kahed(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.contains(2)) {
                     int sagedus = Collections.frequency(valik, 2);
@@ -61,20 +50,11 @@ public class Meetodid {
                     } else {
                         return (-(2*3)) + (sagedus*2);
                     }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                } return 9991;
     }
     public static int kolmed(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.contains(3)) {
                     int sagedus = Collections.frequency(valik, 3);
@@ -83,20 +63,11 @@ public class Meetodid {
                     } else {
                         return (-(3*3)) + (sagedus*3);
                     }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int neljad(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                  return 9990;
                 }
                 if (valik.contains(4)) {
                     int sagedus = Collections.frequency(valik, 4);
@@ -105,20 +76,12 @@ public class Meetodid {
                     } else {
                         return (-(4*3)) + (sagedus*4);
                     }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
+
     public static int viied(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.contains(5)) {
                     int sagedus = Collections.frequency(valik, 5);
@@ -127,20 +90,11 @@ public class Meetodid {
                     } else {
                         return (-(5*3)) + (sagedus*5);
                     }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int kuued(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.contains(6)) {
                     int sagedus = Collections.frequency(valik, 6);
@@ -149,25 +103,16 @@ public class Meetodid {
                     } else {
                         return (-(6*3)) + (sagedus*6);
                     }
-                } else {
-                    throw new Exception( "ei saa tabelisse panna ");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                } return 9991;
     }
     public static int paar(List<Integer> valik) {
-        while(true){
-            try {
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if(valik.size()!=2){
                     if(valik.size()>2){
-                        throw new Exception("valisid liiga palju täringuid");
-                    }throw new Exception("valisid liiga vähe täringuid");
+                        return 9992;
+                    }return 9993;
                 }
                 if (valik.get(0) == valik.get(1)) {
                     if (valik.get(0) == 6) {
@@ -175,26 +120,18 @@ public class Meetodid {
                     } else {
                         return -(12 - valik.get(0) * 2);
                     }
-                }
-                throw new Exception("ei saa tabelisse panna ");
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
 
     public static int kolmik(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.size() != 3) {
                     if (valik.size() > 3) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                    throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 if (valik.get(0) == valik.get(1) && valik.get(1) == valik.get(2)) {
                     if (valik.get(0) == 6) {
@@ -202,25 +139,17 @@ public class Meetodid {
                     } else {
                         return -(18 - valik.get(0) * 3);
                     }
-                }
-                throw new Exception("ei saa tabelisse panna ");
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int nelik(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                throw new Exception("Sa ei valinud ühtegi täringut");
-            }
+                    return 9990;
+                }
                 if (valik.size() != 4) {
                     if (valik.size() > 4) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                   throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 if (valik.get(0) == valik.get(1) && valik.get(1) == valik.get(2)&& valik.get(2)== valik.get(3)){
                     if (valik.get(0) == 6) {
@@ -228,26 +157,17 @@ public class Meetodid {
                     } else {
                         return -(24 - valik.get(0) * 3);
                     }
-                }
-                throw new Exception("ei saa tabelisse panna");
-
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int kaksPlussKaks(List<Integer> valik){
-        while(true){
-            try{
                 if(valik.size()==0){
-                throw new Exception("Sa ei valinud ühtegi täringut");
-            }
+                    return 9990;
+                }
                 if (valik.size() != 4) {
                     if (valik.size() > 4) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                    throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 Set<Integer> set = new HashSet<Integer>(valik);
                 if (set.size() < valik.size()) {
@@ -264,25 +184,17 @@ public class Meetodid {
                             return -(22 - sum);
                         }
                     }
-                }
-                throw new Exception( "ei saa tabelisse panna ");
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int maja(List<Integer> valik){
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.size() != 5) {
                     if (valik.size() > 5) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                    throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 Set<Integer> set = new HashSet<Integer>(valik);
                 if (set.size() < valik.size()) {
@@ -300,70 +212,45 @@ public class Meetodid {
                             return -(28 - sum);
                         }
                     }
-                }
-                throw new Exception("ei saa tabelisse panna ");
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return  9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int väikeRida(List<Integer> valik){
-        while(true){
-            try{
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.size() != 5) {
                     if (valik.size() > 5) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                    throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 Set<Integer> set = new HashSet<Integer>(valik);
                 if (set.size() == valik.size()&&valik.get(0)==1){
                     return 0;
-                }
-                throw new Exception("ei saa tabelisse panna");
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
     public static int suurRida(List<Integer> valik){
-        while(true){
-            try {
                 if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+                    return 9990;
                 }
                 if (valik.size() != 5) {
                     if (valik.size() > 5) {
-                        throw new Exception("valisid liiga palju täringuid");
+                        return 9992;
                     }
-                    throw new Exception("valisid liiga vähe täringuid");
+                    return 9993;
                 }
                 Set<Integer> set = new HashSet<Integer>(valik);
                 if (set.size() == valik.size()&&valik.get(0)==2){
                     return 0;
-                }
-                throw new Exception("ei saa tabelisse panna");
-
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999;// 9999 on siis mingi error
+                }return 9991;
     }
 
     public static int summa(List<Integer> valik) {
-        while(true){
-            try{
                 if(valik.size()==0){
-                throw new Exception("Sa ei valinud ühtegi täringut");
-            }
+                    return 9990;
+                }
                 if (valik.size() > 5) {
-                    throw new Exception("valisid liiga palju täringuid");
+                    return 9992;
                 }
                 Collections.sort(valik);
                 Collections.reverse(valik);
@@ -376,41 +263,28 @@ public class Meetodid {
                 }else{
                     return summa;
                 }
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                break;
-            }
-        }return 9999; // 9999 on siis mingi error
     }
     public static int jospel(List<Integer> valik, int jospel) {
-        while (true){
-            try{
-                if(valik.size()==0){
-                    throw new Exception("Sa ei valinud ühtegi täringut");
+        if (valik.size() == 0) {
+            return 9990;
+        }
+        if (valik.size() < 5) {
+            return 9993;
+        }
+        List<Integer> ilmakordusteta = new ArrayList<>(new HashSet<>(valik));
+        Collections.sort(valik);
+        int väärtus = 0;
+        if (ilmakordusteta.size() <= 3) {
+            väärtus = Collections.frequency(valik, jospel);
+            System.out.println(väärtus);
+            if (väärtus >= 5) {
+                if (väärtus == 5) {
+                    return 0;
+                } else if (väärtus == 6) {
+                    return 10;
                 }
-                if (valik.size() < 5) {
-                    throw new Exception("valisid liiga vähe täringuid");
-                }
-                List<Integer> ilmakordusteta = new ArrayList<>(new HashSet<>(valik));
-                Collections.sort(valik);
-                int väärtus = 0;
-                int indeks = 0;
-                if (ilmakordusteta.size() <= 3) {
-                    väärtus=Collections.frequency(valik,jospel);
-                    if (väärtus >= 5) {
-                        if (väärtus == 5) {
-                            return 0;
-                        } else if (väärtus == 6) {
-                            return 10;
-                        }
-                        return 20;
-                    }
-                }
-                throw new Exception("valitud täringut seas pole josplit");
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                break;
+                return 20;
             }
-        }return 9999;// 9999 on siis mingi error
+        }return 9994;
     }
 }
