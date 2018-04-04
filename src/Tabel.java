@@ -27,6 +27,7 @@ public class Tabel {
         return summa;
     }
 
+
     public int josplidSumma( int[] josplid){
         int summa=0;
         for (int i = 0; i < 6; i++) {
