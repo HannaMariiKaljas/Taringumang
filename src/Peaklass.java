@@ -66,8 +66,12 @@ public class Peaklass {
                     if (!sisend.isEmpty()){
                         String[] pos = sisend.split(" ");
                         int rida = Integer.parseInt(pos[0]);
-                        System.out.println(rida);
-                        int veerg = Integer.parseInt(pos[1]);
+                        int veerg = 0;
+                        if (pos.length == 1){
+                            veerg = 3;
+                        }else{
+                            veerg = Integer.parseInt(pos[1]);
+                        }
                         System.out.println(aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
                         if (veerg == 1){
                             if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
@@ -123,6 +127,34 @@ public class Peaklass {
                                     }
                                 }
                                 System.out.println("Tehtud visete arv: " + aktiivne.getVise()+"\n"+aktiivne.getNimi() + " kord");
+                                break;
+                            }
+                        }else if (veerg == 3) {
+                            if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
+                                System.out.println("Sisesta korrektne reanumber.");
+                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9990) {
+                                System.out.println("Sa ei valinud ühtegi täringut");
+                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9991) {
+                                System.out.println("ei saa tabelisse panna");
+                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9992) {
+                                System.out.println("valisid liiga palju täringuid");
+                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9993) {
+                                System.out.println("valisid liiga vähe täringuid");
+                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9994) {
+                                System.out.println("valiku seas pole josplit");
+                            } else {
+                                aktiivne.getTabel().setJospel(rida - 15, aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)));
+                                aktiivne.getTabel().väljasta();
+                                if (aktiivne.equals(m1)) {
+                                    if (m2.getVise() != 60) {
+                                        aktiivne = m2;
+                                    }
+                                } else {
+                                    if (m1.getVise() != 60) {
+                                        aktiivne = m1;
+                                    }
+                                }
+                                System.out.println("Tehtud visete arv: " + aktiivne.getVise() + "\n" + aktiivne.getNimi() + " kord");
                                 break;
                             }
                         }else{
