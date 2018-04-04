@@ -396,7 +396,7 @@ public class Meetodid {
                 int väärtus = 0;
                 int indeks = 0;
                 if (ilmakordusteta.size() <= 3) {
-                    väärtus=Collections.frequency(valik,4);
+                    väärtus=Collections.frequency(valik,jospel);
                     if (väärtus >= 5) {
                         if (väärtus == 5) {
                             return 0;
