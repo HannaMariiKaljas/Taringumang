@@ -34,6 +34,7 @@ public class Peaklass {
             }
             while(true){
                 täringud.väljasta();
+                aktiivne.lisaVise();
                 System.out.println("Vali täringud, mida uuesti veeretada: ");
                 String sisend = sc.nextLine();
                 if (!sisend.isEmpty()){
