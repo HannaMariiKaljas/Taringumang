@@ -18,12 +18,10 @@ public class Meetodid {
 
     //Parem on vist kui selle klassi kasutamiseks ei pea isendit looma
 
-    public static List<Integer> valik(Täring[] täringud){ // teisendab array Täring[] List<Integer>-ks
+    public static List<Integer> teisenda(int[] täringud){ // teisendab array Täring[] List<Integer>-ks
         List<Integer> valik = new ArrayList<>();
-        for (Täring t : täringud) {
-            if (t.getValitud() == true) {
-                valik.add(t.getTulemus());
-            }
+        for (int i = 0; i < täringud.length; i++){
+            valik.add(täringud[i]);
         }
         return valik;
     }
@@ -160,7 +158,7 @@ public class Meetodid {
             }
         }return 9999;// 9999 on siis mingi error
     }
-    public static int Paar(List<Integer> valik) {
+    public static int paar(List<Integer> valik) {
         while(true){
             try {
                 if(valik.size()==0){
@@ -186,7 +184,7 @@ public class Meetodid {
         }return 9999;// 9999 on siis mingi error
     }
 
-    public static int Kolmik(List<Integer> valik) {
+    public static int kolmik(List<Integer> valik) {
         while(true){
             try{
                 if(valik.size()==0){
@@ -212,7 +210,7 @@ public class Meetodid {
             }
         }return 9999;// 9999 on siis mingi error
     }
-    public static int Nelik(List<Integer> valik) {
+    public static int nelik(List<Integer> valik) {
         while(true){
             try{
                 if(valik.size()==0){
@@ -239,7 +237,7 @@ public class Meetodid {
             }
         }return 9999;// 9999 on siis mingi error
     }
-    public static int KaksPlussKaks(List<Integer> valik){
+    public static int kaksPlussKaks(List<Integer> valik){
         while(true){
             try{
                 if(valik.size()==0){
@@ -274,7 +272,7 @@ public class Meetodid {
             }
         }return 9999;// 9999 on siis mingi error
     }
-    public static int Maja(List<Integer> valik){
+    public static int maja(List<Integer> valik){
         while(true){
             try{
                 if(valik.size()==0){
@@ -310,7 +308,7 @@ public class Meetodid {
             }
         }return  9999;// 9999 on siis mingi error
     }
-    public static int VäikeRida(List<Integer> valik){
+    public static int väikeRida(List<Integer> valik){
         while(true){
             try{
                 if(valik.size()==0){
@@ -333,7 +331,7 @@ public class Meetodid {
             }
         }return 9999;// 9999 on siis mingi error
     }
-    public static int SuurRida(List<Integer> valik){
+    public static int suurRida(List<Integer> valik){
         while(true){
             try {
                 if(valik.size()==0){
@@ -358,7 +356,7 @@ public class Meetodid {
         }return 9999;// 9999 on siis mingi error
     }
 
-    public static int Summa(List<Integer> valik) {
+    public static int summa(List<Integer> valik) {
         while(true){
             try{
                 if(valik.size()==0){
@@ -384,7 +382,7 @@ public class Meetodid {
             }
         }return 9999; // 9999 on siis mingi error
     }
-    public static int Jospel(List<Integer> valik, int jospel) {
+    public static int jospel(List<Integer> valik, int jospel) {
         while (true){
             try{
                 if(valik.size()==0){
@@ -398,7 +396,7 @@ public class Meetodid {
                 int väärtus = 0;
                 int indeks = 0;
                 if (ilmakordusteta.size() <= 3) {
-                    väärtus=Collections.frequency(valik,4);
+                    väärtus=Collections.frequency(valik,jospel);
                     if (väärtus >= 5) {
                         if (väärtus == 5) {
                             return 0;

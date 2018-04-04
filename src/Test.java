@@ -4,7 +4,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
         List<Integer> proov= new ArrayList<>();
-        Meetodid m1=new Meetodid(proov);
+        Meetodid m1=new Meetodid();
         System.out.println(m1.ühed(proov));
 
         String test = "15";
