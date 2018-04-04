@@ -14,6 +14,7 @@ public class Peaklass {
         Mängija aktiivne = m1;
         Täringud täringud = new Täringud();
 
+        System.out.println(aktiivne.getNimi() + " kord");
 
         while(true){
             täringud.veeretaKõik();
@@ -83,7 +84,7 @@ public class Peaklass {
                                         aktiivne = m1;
                                     }
                                 }
-                                System.out.println(aktiivne.getNimi() + " kord. " + "Tehtud visete arv: " + aktiivne.getVise());
+                                System.out.println("Tehtud visete arv: " + aktiivne.getVise()+"\n"+aktiivne.getNimi() + " kord");
                                 break;
                             }
                         }else if (veerg == 2){
@@ -101,7 +102,7 @@ public class Peaklass {
                                         aktiivne = m1;
                                     }
                                 }
-                                System.out.println(aktiivne.getNimi() + " kord. " + "Tehtud visete arv: " + aktiivne.getVise());
+                                System.out.println("Tehtud visete arv: " + aktiivne.getVise()+"\n"+aktiivne.getNimi() + " kord");
                                 break;
                             }
                         }else{
