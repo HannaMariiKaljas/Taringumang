@@ -14,10 +14,11 @@ public class Peaklass {
         Mängija aktiivne = m1;
         Täringud täringud = new Täringud();
 
-        System.out.println(aktiivne.getNimi() + " kord");
-
         while(true){
             täringud.veeretaKõik();
+            aktiivne.lisaVise();
+            aktiivne.getTabel().väljasta();
+            System.out.println("\n" + aktiivne.getNimi() + " kord! Tehtud visete arv: " + aktiivne.getVise() + "\n");
             if (aktiivne.getVise() == 1){
                 while(true){
                     boolean kontroll = false;
@@ -34,21 +35,25 @@ public class Peaklass {
                 }
             }
             while(true){
-                täringud.väljasta();
-                aktiivne.lisaVise();
-                System.out.println("Vali täringud, mida uuesti veeretada: ");
-                String sisend = sc.nextLine();
-                if (!sisend.isEmpty()){
-                    String[] sõned = sisend.split(" ");
-                    int[] valik = new int[sõned.length];
-                    for (int i = 0; i < sõned.length; i++) {
-                        valik[i] = Integer.parseInt(sõned[i]);
+                if (aktiivne.getVise() != 60){
+                    täringud.väljasta();
+                    System.out.println("Vali täringud, mida uuesti veeretada: ");
+                    String sisend = sc.nextLine();
+                    if (!sisend.isEmpty()){
+                        String[] sõned = sisend.split(" ");
+                        int[] valik = new int[sõned.length];
+                        for (int i = 0; i < sõned.length; i++) {
+                            valik[i] = Integer.parseInt(sõned[i]);
+                        }
+                        täringud.veeretaValik(valik);
+                        aktiivne.lisaVise();
+                    }else{
+                        break;
                     }
-                    täringud.veeretaValik(valik);
-                    aktiivne.lisaVise();
                 }else{
                     break;
                 }
+
             }
             while(true){
                 aktiivne.getTabel().väljasta();
@@ -68,11 +73,12 @@ public class Peaklass {
                         int rida = Integer.parseInt(pos[0]);
                         int veerg = 0;
                         if (pos.length == 1){
-                            veerg = 3;
+                            if(rida > 14){
+                                veerg = 3;
+                            }
                         }else{
                             veerg = Integer.parseInt(pos[1]);
                         }
-                        System.out.println(aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
                         if (veerg == 1){
                             if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
                                 System.out.println("Sisesta korrektne reanumber.");
@@ -88,7 +94,6 @@ public class Peaklass {
                                 System.out.println("valiku seas pole josplit");
                             }else{
                                 aktiivne.getTabel().setEsimene(rida-1, aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
-                                aktiivne.getTabel().väljasta();
                                 if (aktiivne.equals(m1)){
                                     if (m2.getVise() != 60){
                                         aktiivne = m2;
@@ -98,7 +103,9 @@ public class Peaklass {
                                         aktiivne = m1;
                                     }
                                 }
-                                System.out.println("Tehtud visete arv: " + aktiivne.getVise()+"\n"+aktiivne.getNimi() + " kord");
+                                if (m1.getVise() == 60 && m2.getVise() == 60){
+                                    break;
+                                }
                                 break;
                             }
                         }else if (veerg == 2){
@@ -116,7 +123,6 @@ public class Peaklass {
                                 System.out.println("valiku seas pole josplit");
                             }else{
                                 aktiivne.getTabel().setTeine(rida-1,aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
-                                aktiivne.getTabel().väljasta();
                                 if (aktiivne.equals(m1)){
                                     if (m2.getVise() != 60){
                                         aktiivne = m2;
@@ -126,7 +132,9 @@ public class Peaklass {
                                         aktiivne = m1;
                                     }
                                 }
-                                System.out.println("Tehtud visete arv: " + aktiivne.getVise()+"\n"+aktiivne.getNimi() + " kord");
+                                if (m1.getVise() == 60 && m2.getVise() == 60){
+                                    break;
+                                }
                                 break;
                             }
                         }else if (veerg == 3) {
@@ -144,7 +152,6 @@ public class Peaklass {
                                 System.out.println("valiku seas pole josplit");
                             } else {
                                 aktiivne.getTabel().setJospel(rida - 15, aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)));
-                                aktiivne.getTabel().väljasta();
                                 if (aktiivne.equals(m1)) {
                                     if (m2.getVise() != 60) {
                                         aktiivne = m2;
@@ -154,7 +161,9 @@ public class Peaklass {
                                         aktiivne = m1;
                                     }
                                 }
-                                System.out.println("Tehtud visete arv: " + aktiivne.getVise() + "\n" + aktiivne.getNimi() + " kord");
+                                if (m1.getVise() == 60 && m2.getVise() == 60){
+                                    break;
+                                }
                                 break;
                             }
                         }else{
