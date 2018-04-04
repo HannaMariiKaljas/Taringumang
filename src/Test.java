@@ -6,5 +6,10 @@ public class Test {
         List<Integer> proov= new ArrayList<>();
         Meetodid m1=new Meetodid(proov);
         System.out.println(m1.ühed(proov));
+
+        String test = "15";
+        String[] test2 = test.split(" ");
+
+        System.out.println(test2[1]);
     }
 }
