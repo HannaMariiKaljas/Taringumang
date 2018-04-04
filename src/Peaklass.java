@@ -67,7 +67,6 @@ public class Peaklass {
                         String[] pos = sisend.split(" ");
                         int rida = Integer.parseInt(pos[0]);
                         int veerg = 0;
-                        System.out.println(rida);
                         if (pos.length == 1){
                             veerg = 3;
                         }else{

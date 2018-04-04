@@ -27,6 +27,7 @@ public class Tabel {
         return summa;
     }
 
+
     public int josplidSumma( int[] josplid){
         int summa=0;
         for (int i = 0; i < 6; i++) {
@@ -70,11 +71,11 @@ public class Tabel {
     public void setTeine(int i, int tulemus){
         teine[i] = tulemus;
     }
-
+    
     public void setJospel(int i, int tulemus){
         jospel[i] = tulemus;
     }
-
+    
     public void väljasta(){
         System.out.format("%22d%6d",1,2);
         System.out.println(" ");
