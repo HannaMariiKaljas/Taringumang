@@ -2,7 +2,7 @@ public class Mängija {
     private String nimi;
     private Tabel tulemused = new Tabel();
     private int summa;
-    private int vise = 1;
+    private int vise = 0;
 
     public Mängija(String nimi) {
         this.nimi = nimi;

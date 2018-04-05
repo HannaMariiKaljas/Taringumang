@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Tabel {
     private int[] esimene = new int[14];
     private int[] teine = new int[14];
@@ -69,7 +71,11 @@ public class Tabel {
     public void setTeine(int i, int tulemus){
         teine[i] = tulemus;
     }
-
+    
+    public void setJospel(int i, int tulemus){
+        jospel[i] = tulemus;
+    }
+    
     public void väljasta(){
         System.out.format("%22d%6d",1,2);
         System.out.println(" ");
@@ -94,7 +100,7 @@ public class Tabel {
         }
         System.out.println("");
         for (int i = 0; i < 6; i++){
-            System.out.format("%-2s%-12s%12s", i+14 + "\t",valikud[i+14],jospel[i]);
+            System.out.format("%-2s%-12s%12s", i+15 + "\t",valikud[i+14],jospel[i]);
             System.out.println("");
         }
         System.out.println("");
