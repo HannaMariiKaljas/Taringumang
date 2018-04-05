@@ -40,13 +40,19 @@ public class Peaklass {
                     System.out.println("Vali täringud, mida uuesti veeretada: ");
                     String sisend = sc.nextLine();
                     if (!sisend.isEmpty()){
-                        String[] sõned = sisend.split(" ");
-                        int[] valik = new int[sõned.length];
-                        for (int i = 0; i < sõned.length; i++) {
-                            valik[i] = Integer.parseInt(sõned[i]);
+                        try{
+                            String[] sõned = sisend.split(" ");
+
+                            int[] valik = new int[sõned.length];
+                            for (int i = 0; i < sõned.length; i++) {
+                                valik[i] = Integer.parseInt(sõned[i]);
+                            }
+                            täringud.veeretaValik(valik);
+                            aktiivne.lisaVise();
+                        }catch(NumberFormatException e){
+                            System.out.println("Vale sisend." + "\n");
                         }
-                        täringud.veeretaValik(valik);
-                        aktiivne.lisaVise();
+
                     }else{
                         break;
                     }
@@ -63,112 +69,120 @@ public class Peaklass {
                 if (!sisend.isEmpty()){
                     String[] sõned = sisend.split(" ");
                     int[] valik = new int[sõned.length];
-                    for (int i = 0; i < sõned.length; i++) {
-                        valik[i] = Integer.parseInt(sõned[i]);
-                    }
-                    System.out.println("Vali kuhu tabelisse täringud paned.");
-                    sisend = sc.nextLine();
-                    if (!sisend.isEmpty()){
-                        String[] pos = sisend.split(" ");
-                        int rida = Integer.parseInt(pos[0]);
-                        int veerg = 0;
-                        if (pos.length == 1){
-                            if(rida > 14){
-                                veerg = 3; //veergu 3 ei eksisteeri, kasutuses lihtsalt abimuutujana
-                            }
-                        }else{
-                            veerg = Integer.parseInt(pos[1]);
+                    try{
+                        for (int i = 0; i < sõned.length; i++) {
+                            valik[i] = Integer.parseInt(sõned[i]);
                         }
-                        if (veerg == 1){
-                            if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
-                                System.out.println("Sisesta korrektne reanumber.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) ==9990){
-                                System.out.println("Sa ei valinud ühtegi täringut.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9991){
-                                System.out.println("Ei saa tabelisse panna.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9992){
-                                System.out.println("Valisid liiga palju täringuid.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9993){
-                                System.out.println("Valisid liiga vähe täringuid.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9994){
-                                System.out.println("Valiku seas pole josplit.");
-                            }else{
-                                aktiivne.getTabel().setEsimene(rida-1, aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
-                                if (aktiivne.equals(m1)){ //järgmise mängija kord
-                                    if (m2.getVise() != 60){
-                                        aktiivne = m2;
+                        System.out.println("Vali kuhu tabelisse täringud paned.");
+                        sisend = sc.nextLine();
+                        if (!sisend.isEmpty()){
+                            String[] pos = sisend.split(" ");
+                            try{
+                                int rida = Integer.parseInt(pos[0]);
+                                int veerg = 0;
+                                if (pos.length == 1){
+                                    if(rida > 14){
+                                        veerg = 3; //veergu 3 ei eksisteeri, kasutuses lihtsalt abimuutujana
                                     }
                                 }else{
-                                    if (m1.getVise() != 60){
-                                        aktiivne = m1;
+                                    veerg = Integer.parseInt(pos[1]);
+                                }
+                                if (veerg == 1){
+                                    if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
+                                        System.out.println("Sisesta korrektne reanumber.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) ==9990){
+                                        System.out.println("Sa ei valinud ühtegi täringut.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9991){
+                                        System.out.println("Ei saa tabelisse panna.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9992){
+                                        System.out.println("Valisid liiga palju täringuid.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9993){
+                                        System.out.println("Valisid liiga vähe täringuid.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9994){
+                                        System.out.println("Valiku seas pole josplit.");
+                                    }else{
+                                        aktiivne.getTabel().setEsimene(rida-1, aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
+                                        if (aktiivne.equals(m1)){ //järgmise mängija kord
+                                            if (m2.getVise() != 60){
+                                                aktiivne = m2;
+                                            }
+                                        }else{
+                                            if (m1.getVise() != 60){
+                                                aktiivne = m1;
+                                            }
+                                        }
+                                        if (m1.getVise() == 60 && m2.getVise() == 60){
+                                            break;
+                                        }
+                                        break;
                                     }
-                                }
-                                if (m1.getVise() == 60 && m2.getVise() == 60){
-                                    break;
-                                }
-                                break;
-                            }
-                        }else if (veerg == 2){
-                            if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
-                                System.out.println("Sisesta korrektne reanumber.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) ==9990){
-                                System.out.println("Sa ei valinud ühtegi täringut.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9991){
-                                System.out.println("Ei saa tabelisse panna.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9992){
-                                System.out.println("Valisid liiga palju täringuid.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9993){
-                                System.out.println("Valisid liiga vähe täringuid.");
-                            }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9994){
-                                System.out.println("Valiku seas pole josplit.");
-                            }else{
-                                aktiivne.getTabel().setTeine(rida-1,aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
-                                if (aktiivne.equals(m1)){
-                                    if (m2.getVise() != 60){
-                                        aktiivne = m2;
+                                }else if (veerg == 2){
+                                    if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
+                                        System.out.println("Sisesta korrektne reanumber.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) ==9990){
+                                        System.out.println("Sa ei valinud ühtegi täringut.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9991){
+                                        System.out.println("Ei saa tabelisse panna.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9992){
+                                        System.out.println("Valisid liiga palju täringuid.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9993){
+                                        System.out.println("Valisid liiga vähe täringuid.");
+                                    }else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik))==9994){
+                                        System.out.println("Valiku seas pole josplit.");
+                                    }else{
+                                        aktiivne.getTabel().setTeine(rida-1,aktiivne.getTabel().valiMeetod(rida-1,täringud.getValikuVäärtused(valik)));
+                                        if (aktiivne.equals(m1)){
+                                            if (m2.getVise() != 60){
+                                                aktiivne = m2;
+                                            }
+                                        }else{
+                                            if (m1.getVise() != 60){
+                                                aktiivne = m1;
+                                            }
+                                        }
+                                        if (m1.getVise() == 60 && m2.getVise() == 60){
+                                            break;
+                                        }
+                                        break;
+                                    }
+                                }else if (veerg == 3) {
+                                    if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
+                                        System.out.println("Sisesta korrektne reanumber.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9990) {
+                                        System.out.println("Sa ei valinud ühtegi täringut.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9991) {
+                                        System.out.println("Ei saa tabelisse panna.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9992) {
+                                        System.out.println("Valisid liiga palju täringuid.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9993) {
+                                        System.out.println("Valisid liiga vähe täringuid.");
+                                    } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9994) {
+                                        System.out.println("Valiku seas pole josplit.");
+                                    } else {
+                                        aktiivne.getTabel().setJospel(rida - 15, aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)));
+                                        if (aktiivne.equals(m1)) {
+                                            if (m2.getVise() != 60) {
+                                                aktiivne = m2;
+                                            }
+                                        } else {
+                                            if (m1.getVise() != 60) {
+                                                aktiivne = m1;
+                                            }
+                                        }
+                                        if (m1.getVise() == 60 && m2.getVise() == 60){
+                                            break;
+                                        }
+                                        break;
                                     }
                                 }else{
-                                    if (m1.getVise() != 60){
-                                        aktiivne = m1;
-                                    }
+                                    System.out.println("Sisesta korrektne veerunumber.");
                                 }
-                                if (m1.getVise() == 60 && m2.getVise() == 60){
-                                    break;
-                                }
-                                break;
+                            }catch(NumberFormatException e){
+                                System.out.println("Vigane sisend.");
                             }
-                        }else if (veerg == 3) {
-                            if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9998) {
-                                System.out.println("Sisesta korrektne reanumber.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9990) {
-                                System.out.println("Sa ei valinud ühtegi täringut.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9991) {
-                                System.out.println("Ei saa tabelisse panna.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9992) {
-                                System.out.println("Valisid liiga palju täringuid.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9993) {
-                                System.out.println("Valisid liiga vähe täringuid.");
-                            } else if (aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)) == 9994) {
-                                System.out.println("Valiku seas pole josplit.");
-                            } else {
-                                aktiivne.getTabel().setJospel(rida - 15, aktiivne.getTabel().valiMeetod(rida - 1, täringud.getValikuVäärtused(valik)));
-                                if (aktiivne.equals(m1)) {
-                                    if (m2.getVise() != 60) {
-                                        aktiivne = m2;
-                                    }
-                                } else {
-                                    if (m1.getVise() != 60) {
-                                        aktiivne = m1;
-                                    }
-                                }
-                                if (m1.getVise() == 60 && m2.getVise() == 60){
-                                    break;
-                                }
-                                break;
-                            }
-                        }else{
-                            System.out.println("Sisesta korrektne veerunumber.");
                         }
+                    }catch(NumberFormatException b){
+                        System.out.println("Vigane sisend.");
                     }
                 }else{
                     System.out.println("Sisend ei saa olla tühi.");
