@@ -1,4 +1,6 @@
-public class Mängija {
+import java.io.Serializable;
+
+public class Mängija implements Serializable{
     private String nimi;
     private Tabel tulemused = new Tabel();
     private int summa;
