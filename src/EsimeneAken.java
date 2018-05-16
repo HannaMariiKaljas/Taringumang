@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -9,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.TableViewSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -20,10 +18,9 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class EsimeneAken extends Application {
     public String mängija1;
@@ -32,15 +29,13 @@ public class EsimeneAken extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Täringumäng");
-        GridPane gridPane = TeeGrid();
-        tükid(gridPane);
+        GridPane gridPane = tükid();
         Scene scene = new Scene(gridPane, 750, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-
-    private GridPane TeeGrid() {
+    private GridPane tükid() {
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setPadding(new Insets(100, 100, 100, 10));
@@ -53,11 +48,6 @@ public class EsimeneAken extends Application {
         columnTwoConstrains.setHgrow(Priority.ALWAYS);
 
         gridPane.getColumnConstraints().addAll(columnOneConstraints, columnTwoConstrains);
-
-        return gridPane;
-    }
-
-    private void tükid(GridPane gridPane) {
         Label pealkiri = new Label("TÄRINGUMÄNG");
         pealkiri.setFont(Font.font("Cooper Black", FontWeight.BOLD, 40));
         pealkiri.setTextFill(Color.TEAL);
@@ -115,13 +105,15 @@ public class EsimeneAken extends Application {
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             }
         });
+    return gridPane;
     }
 
     private GridPane mänguAken(){
         GridPane gridpane = new GridPane();
+        gridpane.setStyle("-fx-background-color: #afeeee");
         gridpane.setPadding(new Insets(10,10,10,10));
-        gridpane.setVgap(50);
-        gridpane.setHgap(50);
+        gridpane.setVgap(40);
+        gridpane.setHgap(40);
 
         TableView tableView = new TableView();
 
@@ -140,7 +132,6 @@ public class EsimeneAken extends Application {
             return new ReadOnlyStringWrapper(stringValues.get(rowIndex));
         });
 
-
         TableColumn m1esimene = new TableColumn("Esimene");
         TableColumn m1teine = new TableColumn("Teine");
         TableColumn m2esimene = new TableColumn("Esimene");
@@ -148,17 +139,124 @@ public class EsimeneAken extends Application {
         m1.getColumns().addAll(m1esimene,m1teine);
         m2.getColumns().addAll(m2esimene,m2teine);
 
-        File file = new File("dice1.png"); // peab välja mõtlema, kuidas ära siduda pildid ja täringute väärtused ja panna need gridpane'i
-        ImageView üks = new ImageView(new Image(file.toURI().toString()));
-
-        GridPane.setConstraints(üks,1,0);
-
         tableView.getColumns().addAll(reeglid,m1,m2);
 
+        Button veeretaNupp = new Button("VEERETA");
+        veeretaNupp.setPrefHeight(40);
+        veeretaNupp.setDefaultButton(true);
+        veeretaNupp.setPrefWidth(100);
+        gridpane.add(veeretaNupp, 0, 2, 2, 1);
+        GridPane.setHalignment(veeretaNupp, HPos.CENTER);
+        GridPane.setMargin(veeretaNupp, new Insets(20, 0,20,0));
 
-        gridpane.getChildren().addAll(tableView,üks);
+        Button lahkuNupp = new Button("Lahku mängust");
+        lahkuNupp.setPrefHeight(30);
+        lahkuNupp.setDefaultButton(true);
+        lahkuNupp.setPrefWidth(100);
+        gridpane.add(lahkuNupp, 0, 2, 2, 1);
+        GridPane.setHalignment(lahkuNupp, HPos.RIGHT);
+
+        veeretaNupp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ImageView üks = täring();
+                ImageView kaks = täring();
+                ImageView kolm = täring();
+                ImageView neli = täring();
+                ImageView viis = täring();
+                ImageView kuus = täring();
+                ImageView seitse = täring();
+                GridPane.setConstraints(üks,1,0,2,6);
+                GridPane.setConstraints(kaks,2,0,3,4);
+                GridPane.setConstraints(kolm,4,0,5,5);
+                GridPane.setConstraints(neli,3,0,3,2);
+                GridPane.setConstraints(viis,2,0,3,3);
+                GridPane.setConstraints(kuus,2,0,7,7);
+                GridPane.setConstraints(seitse,3,0,3,5);
+
+                gridpane.getChildren().addAll(üks,kaks,kolm,neli, viis, kuus, seitse);
+            }
+        });
+
+        lahkuNupp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                GridPane juur = tulemusteAken();
+                Stage stage=new Stage();
+                stage.setTitle("Täringumäng");
+                stage.setScene(new Scene(juur, 600,600));
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+        });
+
+        gridpane.getChildren().addAll(tableView);
         return gridpane;
     }
+
+    private ImageView täring(){
+        Random ran=new Random();
+        int vise = ran.nextInt(6)+1;
+        ImageView täring;
+        switch (vise){
+            case 1: File täring1 = new File("dice1.png");
+                täring = new ImageView(new Image(täring1.toURI().toString()));
+                break;
+            case 2: File täring2 = new File("dice2.png");
+                täring = new ImageView(new Image(täring2.toURI().toString()));
+                break;
+            case 3: File täring3 = new File("dice3.png");
+                täring = new ImageView(new Image(täring3.toURI().toString()));
+                break;
+            case 4: File täring4 = new File("dice4.png");
+                täring = new ImageView(new Image(täring4.toURI().toString()));
+                break;
+            case 5: File täring5 = new File("dice5.png");
+                täring = new ImageView(new Image(täring5.toURI().toString()));
+                break;
+            case 6: File täring6 = new File("dice6.png");
+                täring = new ImageView(new Image(täring6.toURI().toString()));
+                break;
+                default: File täring7 = new File("dice6.png");
+                    täring = new ImageView(new Image(täring7.toURI().toString()));
+        }
+        return täring;
+    }
+    private GridPane tulemusteAken(){
+        GridPane gridpane = new GridPane();
+        gridpane.setStyle("-fx-background-color: #afeeee");
+        gridpane.setPadding(new Insets(10,10,10,10));
+        gridpane.setVgap(80);
+        gridpane.setHgap(50);
+
+        Label pealkiri = new Label("Tulemused:");
+        pealkiri.setFont(Font.font("Cooper Black", FontWeight.BOLD, 40));
+        pealkiri.setTextFill(Color.TEAL);
+        gridpane.add(pealkiri, 0,0,2,1);
+        GridPane.setHalignment(pealkiri, HPos.CENTER);
+        GridPane.setMargin(pealkiri, new Insets(20, 0,20,0));
+
+        Button uusMäng = new Button("Uus mäng");
+        uusMäng.setPrefHeight(30);
+        uusMäng.setDefaultButton(true);
+        uusMäng.setPrefWidth(100);
+        gridpane.add(uusMäng, 3, 5, 2, 1);
+        GridPane.setHalignment(uusMäng, HPos.RIGHT);
+        uusMäng.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                GridPane juur = tükid();
+                Stage stage=new Stage();
+                stage.setTitle("Täringumäng");
+                stage.setScene(new Scene(juur, 600,600));
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+        });
+
+        return gridpane;
+    }
+
     private void Veateade(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
