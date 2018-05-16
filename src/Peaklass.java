@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Peaklass {
     public static void main(String[] args) {
+        //gridpane
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisesta esimese mängija nimi: ");
