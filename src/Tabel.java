@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Tabel {
+public class Tabel implements Serializable{
     private int[] esimene = new int[14];
     private int[] teine = new int[14];
     private int[] jospel = new int[6];

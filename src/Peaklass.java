@@ -1,21 +1,46 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class Peaklass {
-    public static void main(String[] args) {
-        //gridpane
-
+    public static void main(String[] args) throws IOException, ClassNotFoundException{
+        System.out.println("Kas soovid [J]ätkata eelmist mängu või [A]lustada uut?");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Sisesta esimese mängija nimi: ");
-        Mängija m1 = new Mängija(sc.nextLine());
-        System.out.println("Sisesta teise mängija nimi: ");
-        Mängija m2 = new Mängija(sc.nextLine());
-        Mängija aktiivne = m1; // alustab mängija 1
+        Mängija m1;
+        Mängija m2;
+        if(sc.nextLine().equals("J")){
+            try{
+                FileInputStream fin = new FileInputStream("mänguseis.ser");
+                ObjectInputStream oin = new ObjectInputStream(fin);
+                m1 = (Mängija) oin.readObject();
+                m2 = (Mängija) oin.readObject();
+            }catch (FileNotFoundException e){
+                System.out.println("Eelmist mängu pole salvestatud. Alustame selle asemel uut.");
+                System.out.println("Sisesta esimese mängija nimi: ");
+                m1 = new Mängija(sc.nextLine());
+                System.out.println("Sisesta teise mängija nimi: ");
+                m2 = new Mängija(sc.nextLine());
+            }
+        }else {
+            System.out.println("Sisesta esimese mängija nimi: ");
+            m1 = new Mängija(sc.nextLine());
+            System.out.println("Sisesta teise mängija nimi: ");
+            m2 = new Mängija(sc.nextLine());
+        }
         Täringud täringud = new Täringud();
+        Mängija aktiivne = m1; //alustab mängija 1
 
         while(true){
+            FileOutputStream f = new FileOutputStream(new File("mänguseis.ser"),false);
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            o.writeObject(aktiivne);
+            if (aktiivne.equals(m1)){
+                o.writeObject(m2);
+            }else{
+                o.writeObject(m1);
+            }
             täringud.veeretaKõik();
             aktiivne.lisaVise();
             aktiivne.getTabel().väljasta();

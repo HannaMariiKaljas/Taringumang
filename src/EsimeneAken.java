@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -7,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.skin.TableViewSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -17,6 +20,10 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 public class EsimeneAken extends Application {
     public String mängija1;
@@ -118,9 +125,21 @@ public class EsimeneAken extends Application {
 
         TableView tableView = new TableView();
 
-        TableColumn reegel = new TableColumn("Reegel");
-        TableColumn m1 = new TableColumn(mängija1);
-        TableColumn m2 = new TableColumn(mängija2);
+        List<String> stringValues = Arrays.asList("Ühed", "Kahed", "Kolmed", "Neljad", "Viied", "Kuued", "Paar", "Kolmik", "Nelik", "Kaks+Kaks", "Maja", "Väike rida", "Suur rida",
+                "Summa", "Ühe jospel", "Kahe jospel","Kolme jospel", "Nelja jospel", "Viie jospel", "Kuue jospel");
+
+        TableColumn<Integer, String> reeglid = new TableColumn<>("Reegel");
+        TableColumn<Integer, String> m1 = new TableColumn<>(mängija1);
+        TableColumn<Integer, String> m2 = new TableColumn<>(mängija2);
+
+        for (int i = 0; i < stringValues.size(); i++) {
+            tableView.getItems().add(i);
+        }
+        reeglid.setCellValueFactory(cellData -> {
+            Integer rowIndex = cellData.getValue();
+            return new ReadOnlyStringWrapper(stringValues.get(rowIndex));
+        });
+
 
         TableColumn m1esimene = new TableColumn("Esimene");
         TableColumn m1teine = new TableColumn("Teine");
@@ -134,11 +153,10 @@ public class EsimeneAken extends Application {
 
         GridPane.setConstraints(üks,1,0);
 
-        tableView.getColumns().addAll(reegel,m1,m2);
+        tableView.getColumns().addAll(reeglid,m1,m2);
 
 
         gridpane.getChildren().addAll(tableView,üks);
-
         return gridpane;
     }
     private void Veateade(Alert.AlertType alertType, Window owner, String title, String message) {
